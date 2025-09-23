@@ -66,7 +66,7 @@ Demonstrate a **fully automated end-to-end dev cycle** where Claude Code execute
     
 4. **Open in Your Editor**
     - Open the `examples/react` folder in VS Code (or your preferred IDE).
-    - Add your chosen `PRD-*.md` file to this folder.
+    - Add your chosen/created `PRD-*.md` and `agent-*.md` files to this folder.
 5. **Start Claude Code**
     - Launch Claude Code in your IDE.
     - Ensure any MCP servers are configured (Playwright MCP, Context7, etc.) as needed .
