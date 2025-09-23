@@ -19,10 +19,10 @@ By the end, attendees should understand how to:
 - **Participants**: Small groups (2–4 per table). Works well for 20–40 attendees.
 - **Pre-reqs**:
     - Laptops with GitHub access.
-    - Node.js + npm installed.
+    - Node.js + npm installed (if choosing track 1).
     - Git CLI and `gh` (GitHub CLI) installed and authenticated.
     - Claude Code setup in their IDE/editor with MCP enabled.
-- **Repos**: Fork [TodoMVC React](https://github.com/tastejs/todomvc/tree/gh-pages/examples/react).
+- **Repos**: Fork [TodoMVC React](https://github.com/tastejs/todomvc/tree/gh-pages/examples/react) (if choosing track 1).
 
 ---
 
@@ -45,7 +45,7 @@ Demonstrate a **fully automated end-to-end dev cycle** where Claude Code execute
 
 ### Getting Started with the TodoMVC React Repo
 
-1. **Clone the Repo**
+1. **Clone the [ToDo Repo](https://github.com/tastejs/todomvc/tree/master)**
     
     ```bash
     git clone https://github.com/tastejs/todomvc.git
