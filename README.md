@@ -71,7 +71,7 @@ Demonstrate a **fully automated end-to-end dev cycle** where Claude Code execute
 5. **Start Claude Code**
     - Launch Claude Code in your IDE.
     - Ensure any MCP servers are configured (Playwright MCP, Context7, etc.) as needed .
-    - Follow the guide/example for creating a [`CLAUDE.md`](http://CLAUDE.md) file.
+    - Follow the guide for creating/updating a [`CLAUDE.md`](https://github.com/TribeAI/cox-claude-code-workshop/blob/main/guides/Applying_CLAUDE_md.md) file.
 
 ### Steps
 
