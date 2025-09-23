@@ -1,6 +1,7 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+## Purpose
+This file provides instructions for Claude Code when working in this repository. Follow these guidelines whenever you are asked to implement features or complete tasks.
 
 ## Project Overview
 
@@ -23,6 +24,48 @@ The application uses a centralized state management approach where:
 - `src/todo/reducer.js` - Todo state reducer with actions (ADD_ITEM, UPDATE_ITEM, etc.)
 - `src/todo/constants.js` - Action type constants
 - `src/todo/components/` - UI components (header, main, footer, item, input)
+
+## General Workflow
+
+Follow this complete workflow when implementing features or completing tasks:
+
+### 1. **Understand the PRD**
+- Look for files named `PRD-*.md` in the repository
+- Break the requirements into a clear, ordered task list
+- Confirm you understand the requirements before coding
+
+### 2. **Generate Tasks with Subagent**
+- Use the `task-generator` subagent to produce a structured task plan
+- Include coding tasks, test tasks, browser testing, and PR creation steps
+- Wait for "Go" confirmation before proceeding with detailed implementation
+
+### 3. **Code Implementation with TDD**
+- Follow Test Driven Development (Red-Green-Refactor cycle)
+- Work incrementally, committing frequently
+- Write clear commit messages (`feat: ...`, `fix: ...`, `test: ...`)
+- Follow React and JavaScript best practices
+
+### 4. **Unit Testing**
+- Add tests for all new features using existing testing framework
+- Use React Testing Library / Jest patterns
+- Ensure all tests run locally without errors
+- Run `npm run test` frequently during development
+
+### 5. **Browser Testing with MCP**
+- Use the Playwright MCP server to run browser tests
+- Validate UI interactions (toggles, filters, date pickers)
+- Test edge cases and accessibility requirements
+- Ensure persistence after refresh
+
+### 6. **Code and Security Review**
+- Use `code-reviewer` subagent for code quality review
+- Use `security-code-reviewer` subagent for security audit
+- Address any issues before proceeding to PR creation
+
+### 7. **PR Creation**
+- Use GitHub CLI (`gh`) to open a pull request
+- Include PRD file reference in PR description
+- Ensure all tests pass before opening PR
 
 ## Development Methodology
 
@@ -57,6 +100,95 @@ The application uses a centralized state management approach where:
 - Verify state transitions are correct
 - Test edge cases and error conditions
 - Ensure immutability of state updates
+
+## Coding Conventions
+
+Follow these conventions to maintain consistency with the existing codebase:
+
+### React Patterns
+- Use **React functional components** with hooks (existing pattern)
+- Leverage the **useReducer** hook for state management (follows current architecture)
+- Use the existing `todoReducer` pattern for state updates
+- Follow the MVC pattern: components → actions → reducer → state
+
+### Data Persistence
+- Use **local storage** for persistence (follows existing implementation)
+- Maintain state between browser sessions
+- Handle storage errors gracefully
+
+### Code Style
+- Follow existing repository style for variable names and formatting
+- Use existing naming conventions (camelCase for variables, PascalCase for components)
+- Maintain consistent indentation and bracket style
+- Use descriptive variable and function names
+
+### User Interface
+- Write user-friendly UI labels and messages
+- Follow existing CSS class patterns from `todomvc-app-css`
+- Use `classnames` library for conditional CSS classes (existing dependency)
+- Ensure accessibility with proper labels and ARIA attributes
+
+### File Organization
+- Place new components in `src/todo/components/`
+- Add new actions to `src/todo/constants.js`
+- Update reducer logic in `src/todo/reducer.js`
+- Follow existing import/export patterns
+
+## Edge Cases to Consider
+
+When implementing features, always consider these edge cases:
+
+### Input Handling
+- Empty input validation and user feedback
+- Whitespace-only inputs
+- Very long text inputs
+- Special characters and HTML entities
+
+### Data Management
+- Data persistence after browser refresh
+- Storage quota exceeded scenarios
+- Corrupted localStorage data recovery
+- Multiple browser tabs synchronization
+
+### UI Interactions
+- Multiple filters toggled simultaneously
+- Rapid successive user actions
+- Loading states and error handling
+- Keyboard navigation support
+
+### Accessibility
+- Screen reader compatibility
+- Keyboard-only navigation
+- Color contrast in dark mode
+- Focus management and visual indicators
+
+## Testing Checklist
+
+Before considering any task complete, ensure all items are checked:
+
+### Unit Tests
+- [ ] Unit tests for each new function/component
+- [ ] Tests cover all code paths and edge cases
+- [ ] Tests are isolated and don't depend on external state
+- [ ] All existing tests continue to pass
+
+### Integration Tests
+- [ ] Integration tests for task creation, editing, and deletion
+- [ ] Filter functionality tests (All, Active, Completed)
+- [ ] Data persistence tests (localStorage integration)
+- [ ] Component interaction tests
+
+### Browser Testing
+- [ ] Browser test that mirrors PRD acceptance criteria
+- [ ] Cross-browser compatibility (Chrome, Firefox, Safari)
+- [ ] Mobile responsive behavior
+- [ ] Performance with large datasets
+
+### Code Quality
+- [ ] All tests must pass before opening PR (`npm run test`)
+- [ ] Code passes linting checks (`npx eslint src/`)
+- [ ] No console errors or warnings
+- [ ] Code follows established patterns and conventions
 
 ## Development Commands
 
@@ -108,11 +240,13 @@ npx eslint src/
 ```
 1. Generate Tasks (task-generator) →
 2. Implement with TDD →
-3. Code Review (code-reviewer) →
-4. Security Review (security-code-reviewer)
+3. Browser Testing (Playwright MCP) →
+4. Code Review (code-reviewer) →
+5. Security Review (security-code-reviewer) →
+6. PR Creation (GitHub CLI)
 ```
 
-**IMPORTANT**: Never skip the code-reviewer and security-code-reviewer steps. They are mandatory for all completed work.
+**IMPORTANT**: This workflow aligns with the General Workflow section. Never skip the review steps - they are mandatory for all completed work.
 
 ## Build System
 
@@ -128,3 +262,23 @@ npx eslint src/
 - classnames for conditional CSS classes
 - todomvc-app-css for styling
 - Webpack ecosystem for building
+
+## Example Prompt
+
+When starting work on a new feature, use this prompt structure for consistency:
+
+```
+Please implement the feature described in PRD-[feature-name].md.
+
+1. Use the task-generator subagent to produce a detailed task list
+2. Follow CLAUDE.md for coding conventions and workflow
+3. Implement using Test Driven Development (TDD)
+4. Write comprehensive unit and integration tests
+5. Run Playwright MCP browser tests to validate UI interactions
+6. Use code-reviewer and security-code-reviewer subagents for quality assurance
+7. Open a PR with GitHub CLI when all tests pass
+
+Ensure all edge cases are covered and follow the Testing Checklist before completion.
+```
+
+This approach ensures consistency across all feature implementations and maintains the established quality standards.
