@@ -1,8 +1,8 @@
-# Claude Code Hands-Off Workshop
+# Claude Code Hands-On Workshop
 
 ## Purpose
 
-This hands-off workshop is designed to **showcase intermediate-to-advanced features of Claude Code** through structured, hands-on tracks. Participants will get to see end-to-end development cycles automated by Claude, leveraging **subagents** and **MCP servers** for documentation and automated testing.
+This hands-on workshop is designed to **showcase intermediate-to-advanced features of Claude Code** through structured, hands-on tracks. Participants will get to see end-to-end development cycles automated by Claude, leveraging **subagents** and **MCP servers** for documentation and automated testing.
 
 By the end, attendees should understand how to:
 
@@ -26,7 +26,7 @@ By the end, attendees should understand how to:
 
 ---
 
-## Track 1: SDLC Hands-Off Build (TODO App)
+## Track 1: SDLC Hands-On Build (TODO App)
 
 ### Goal
 
