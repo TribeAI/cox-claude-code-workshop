@@ -34,12 +34,15 @@ Demonstrate a **fully automated end-to-end dev cycle** where Claude Code execute
 
 ### Resources
 
-- **PRDs**: 3 Example Markdown files (`PRD-foo.md`, `PRD-bar.md`, `PRD-levels.md`).
+- **PRDs**: 
+    - See example PRD markdown files [here]()
 - **MCP Servers**:
     - [Playwright MCP](https://github.com/microsoft/playwright-mcp?tab=readme-ov-file#getting-started)
     - [Context7 MCP](https://github.com/upstash/context7?tab=readme-ov-file#%EF%B8%8F-installation)
 - **Subagents**:
-    - [Generate-tasks spec](https://github.com/snarktank/ai-dev-tasks/blob/main/generate-tasks.md) – needs formatting update per [Claude docs](https://docs.claude.com/en/docs/claude-code/sub-agents#file-format).
+    - 
+    - See example agent markdown files [here]()
+    - Alternatively, try creating a new agent (following the formatting guidelines in the [Claude docs](https://docs.claude.com/en/docs/claude-code/sub-agents#file-format))
 
 ### Getting Started with the TodoMVC React Repo
 
