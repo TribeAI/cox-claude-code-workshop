@@ -16,7 +16,6 @@ By the end, attendees should understand how to:
 ## Logistics
 
 - **Duration**: 1.5 hours total (flexible)
-- **Participants**: Small groups (2–4 per table). Works well for 20–40 attendees.
 - **Pre-reqs**:
     - Laptops with GitHub access.
     - Node.js + npm installed (if choosing track 1).
@@ -34,14 +33,16 @@ Demonstrate a **fully automated end-to-end dev cycle** where Claude Code execute
 
 ### Resources
 
-- **PRDs**: 
+- **PRD Examples**: 
     - See example PRD markdown files [here](https://github.com/TribeAI/cox-claude-code-workshop/tree/main/examples/PRDs)
-- **Subagents**:
+- **Subagents Examples**:
     - See example agent markdown files [here](https://github.com/TribeAI/cox-claude-code-workshop/tree/main/examples/agents)
     - Alternatively, try creating a new agent (following the formatting guidelines in the [Claude docs](https://docs.claude.com/en/docs/claude-code/sub-agents#file-format))
-- **MCP Servers**:
+- **MCP Server Docs**:
     - [Playwright MCP](https://github.com/microsoft/playwright-mcp?tab=readme-ov-file#getting-started)
     - [Context7 MCP](https://github.com/upstash/context7?tab=readme-ov-file#%EF%B8%8F-installation)
+- **Guides**:
+    - Walkthrough guides on applying CLAUDE.md, custom commands, MCP, and subagents can be found [here](https://github.com/TribeAI/cox-claude-code-workshop/tree/main/guides)
 
 ### Getting Started with the TodoMVC React Repo
 
