@@ -1,36 +1,33 @@
 # Applying CLAUDE.md
 
-## What it is
-CLAUDE.md is a memory file Claude loads to guide behavior. You can keep versions at enterprise, project, and user scopes; Claude reads them hierarchically.
+This file guides Claude’s behavior and persists project/user/enterprise memories.
 
-## Where to put it
-- Project (team-shared): `./CLAUDE.md` or `./.claude/CLAUDE.md`
-- User (personal defaults): `~/.claude/CLAUDE.md`
+## Where to put it (scopes)
+- Project memory: `./CLAUDE.md` or `./.claude/CLAUDE.md`  
+- User memory: `~/.claude/CLAUDE.md`  
+- Enterprise policy (IT‑managed): OS‑specific system paths  
+See: [Determine memory type](https://anthropic.mintlify.app/en/docs/claude-code/memory#determine-memory-type).
 
-## Initialize and edit
-- Bootstrap a memory file:
-```
-/init
-```
-- Open and edit memory files:
-```
-/memory
-```
+## Initialize / edit
+- Bootstrap a project memory: `/init`  
+- Open and edit memory files: `/memory`  
+References: [Set up project memory](https://anthropic.mintlify.app/en/docs/claude-code/memory#set-up-project-memory) • [Directly edit memories](https://anthropic.mintlify.app/en/docs/claude-code/memory#directly-edit-memories-with-memory).
 
-## Compose memories with imports
-Inside CLAUDE.md, reference other files using `@path` lines. Imports can be relative or absolute (nested imports are supported to a limited depth).
+## Import additional files
+Use `@path` lines inside CLAUDE.md to pull in other files:
 ```
-See @README and @package.json for project info.
+See @README for an overview and @package.json for npm scripts.
+
 # Additional Instructions
 - git workflow @docs/git-instructions.md
 - @~/.claude/my-project-instructions.md
 ```
+- Imports support relative/absolute paths; nested imports up to depth 5.  
+- Imports in code blocks/spans are ignored.  
+Details: [CLAUDE.md imports](https://anthropic.mintlify.app/en/docs/claude-code/memory#claude-md-imports).
 
-## Prompt pattern to start a task
-```
-Please implement the feature described in PRD-foo.md.
-1) Use the generate-tasks subagent to produce a task list.
-2) Follow CLAUDE.md for coding conventions and workflow.
-3) Write code, add unit tests, run Playwright MCP browser tests.
-4) Open a PR when all tests pass.
-```
+## Practical guidelines
+Keep memories concise, actionable, and versioned; prefer bullet points and group instructions by heading. Review periodically as architecture and conventions change. See: [Best practices](https://anthropic.mintlify.app/en/docs/claude-code/memory#memory-best-practices).
+
+## Handy shortcut
+Start a line with `#` to quickly add a memory (select the file to store it): [Quickly add memories](https://anthropic.mintlify.app/en/docs/claude-code/memory#quickly-add-memories-with-the--shortcut).

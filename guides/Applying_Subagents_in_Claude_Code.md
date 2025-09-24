@@ -1,34 +1,45 @@
 # Applying Subagents in Claude Code
 
-## What they are
-Subagents are specialized assistants with their own system prompt, tool permissions, and optional model selection. They can be invoked automatically or explicitly.
+## What subagents are
+Subagents are specialized assistants with their own system prompt, tools, and optional model. Claude can delegate automatically based on your request and the agent’s description, or you can invoke them explicitly.
 
-## Create and manage subagents
-- Interactive creation and editing:
+## Create subagents (recommended: interactive)
+Open the subagents interface:
 ```
 /agents
 ```
-Use the UI to create project-level or user-level subagents, set tools, and edit prompts.
+Create a project-level or user-level subagent, set allowed tools, and edit the prompt. See: [Using the /agents command](https://docs.anthropic.com/en/docs/claude-code/sub-agents#using-the-agents-command-recommended).
 
-- File locations (Markdown with YAML frontmatter):
-  - Project scope: `.claude/agents/`
-  - User scope: `~/.claude/agents/`
-  Project agents take precedence on name conflicts.
+## Create subagents (files)
+Locations (Markdown with YAML frontmatter):  
+- Project scope: `.claude/agents/`  
+- User scope: `~/.claude/agents/`  
+Reference: [File locations](https://docs.anthropic.com/en/docs/claude-code/sub-agents#file-locations).
 
-- Minimal file format example:
+Minimal example:
 ```md
 ---
 name: code-reviewer
-description: Expert code review specialist for JS/TS and React
+description: Expert code review specialist. Proactively reviews code for quality, security, and maintainability.
 tools: Read, Grep, Glob, Bash
 model: inherit
 ---
-You are a senior code reviewer. Provide actionable feedback with examples.
+You are a senior code reviewer ensuring high standards of code quality and security.
 ```
+Format details: [Subagent file format](https://docs.anthropic.com/en/docs/claude-code/sub-agents#file-format).
 
-## Use subagents
-- Delegation: Claude may proactively delegate based on your request and the subagent description.
-- Explicit invocation (natural language):
-```
-Use the code-reviewer subagent to review the last commit.
-```
+## Using subagents
+- Automatic delegation is driven by your task phrasing and the agent’s `description`. You can encourage proactive use (e.g., “MUST BE USED”).  
+- Explicit invocation (natural language): “Use the code-reviewer subagent to check my recent changes.”  
+See: [Explicit invocation](https://docs.anthropic.com/en/docs/claude-code/sub-agents#explicit-invocation).
+
+## Practical patterns
+- Test‑runner agent that runs tests and fixes failing cases.  
+- Debugger agent that isolates a failing line and proposes a minimal fix.  
+- Data‑scientist agent configured with data tools (inherits MCP tools if `tools` omitted).  
+Examples & guidance: [Example subagents](https://docs.anthropic.com/en/docs/claude-code/sub-agents#example-subagents).
+
+## Tips
+- Prefer project agents for repo‑specific behavior; they take precedence on name conflicts.  
+- Keep prompts short and action‑oriented for reliable auto‑delegation.  
+- Only grant powerful tools (e.g., `Edit`, `Bash`) to agents that truly need them.
