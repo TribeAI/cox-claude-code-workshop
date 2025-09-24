@@ -27,7 +27,11 @@ See @README for an overview and @package.json for npm scripts.
 Details: [CLAUDE.md imports](https://anthropic.mintlify.app/en/docs/claude-code/memory#claude-md-imports).
 
 ## Practical guidelines
-Keep memories concise, actionable, and versioned; prefer bullet points and group instructions by heading. Review periodically as architecture and conventions change. See: [Best practices](https://anthropic.mintlify.app/en/docs/claude-code/memory#memory-best-practices).
+Keep memories concise, actionable, and versioned; prefer bullet points and group instructions by heading. Review periodically as architecture and conventions change.
+Best Practices:
+- Be specific: “Use 2-space indentation” is better than “Format code properly”.
+- Use structure to organize: Format each individual memory as a bullet point and group related memories under descriptive markdown headings.
+- Review periodically: Update memories as your project evolves to ensure Claude is always using the most up to date information and context.
 
 ## Handy shortcut
 Start a line with `#` to quickly add a memory (select the file to store it): [Quickly add memories](https://anthropic.mintlify.app/en/docs/claude-code/memory#quickly-add-memories-with-the--shortcut).
