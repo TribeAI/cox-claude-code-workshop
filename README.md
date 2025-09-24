@@ -77,17 +77,18 @@ Demonstrate a **fully automated end-to-end dev cycle** where Claude Code execute
 
 ### 1. Engineer Setup
 
-1. Pick one of the provided PRDs.
-2. Copy it into the repo root.
-3. Add MCP servers to Claude Code.
-4. Start Claude Code in **YOLO mode**.
+1. Pick one of the provided PRD example markdown files and modify it (or create a new one from scratch) and copy it into the repo root (i.e., `examples/react`)
+2. Pick one of the provided subagent markdown files and modify it (or create a new one from scratch) and copy it into the repo (i.e., `examples/react/.claude/agents/`)
+    - Alternatively (recommended) do this at a later stage via the interface by calling `/agents` after Claude Code has been initialized.
+3. Add MCP servers to Claude Code (optional, as desired)
+4. Start Claude Code in **YOLO mode** and add a `CLAUDE.md` file.
 5. Prompt Claude Code to spin up a subagent and generate a **task list** based on the PRD.
 
 ### 2. Claude Code Execution
 
 - **Read Docs** (`CLAUDE.md`, repo docs).
 - **Implement Feature**.
-- **Unit + Browser Tests** (Playwright MCP).
+- **Unit + Browser Tests** (e.g., via Playwright MCP).
 - **Create PR** via GitHub CLI.
 
 ### 3. Engineer Review
@@ -95,6 +96,8 @@ Demonstrate a **fully automated end-to-end dev cycle** where Claude Code execute
 - Review PR in GitHub (or chosen tool).
 - Merge PR.
 - Review the updates in the app running locally.
+
+Repeat.
 
 ---
 
