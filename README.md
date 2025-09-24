@@ -77,7 +77,7 @@ Demonstrate a **fully automated end-to-end dev cycle** where Claude Code execute
 
 ### 1. Engineer Setup
 
-1. Pick one of the provided PRD example markdown files and modify it (or create a new one from scratch) and copy it into the repo root (i.e., `examples/react`)
+1. Pick one of the provided PRD example markdown files and modify it (or create a new one from scratch) and copy it into the repo root (i.e., `examples/react/`)
 2. Pick one of the provided subagent markdown files and modify it (or create a new one from scratch) and copy it into the repo (i.e., `examples/react/.claude/agents/`)
     - Alternatively (recommended) do this at a later stage via the interface by calling `/agents` after Claude Code has been initialized.
 3. Add MCP servers to Claude Code (optional, as desired)
