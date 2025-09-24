@@ -97,7 +97,7 @@ Demonstrate a **fully automated end-to-end dev cycle** where Claude Code execute
 - Merge PR.
 - Review the updates in the app running locally.
 
-Repeat.
+### 4. Repeat.
 
 ---
 
