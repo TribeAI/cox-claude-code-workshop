@@ -128,11 +128,6 @@ Developers can try:
     > “Add browser tests for user login using Playwright MCP. Make sure they run successfully before creating a PR.”
     > 
 
-### Facilitator Notes
-
-- Encourage **incremental scope** — BYOC can spiral if the repo is large. Recommend tasks that are **self-contained (1–2 files)**.
-- Have participants add a `CLAUDE.md` to their repo (you can repurpose the one provided).
-
 ---
 
 ## Stretch Goals (Optional Mini-Tracks)
