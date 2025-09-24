@@ -28,6 +28,7 @@ Details: [CLAUDE.md imports](https://anthropic.mintlify.app/en/docs/claude-code/
 
 ## Practical guidelines
 Keep memories concise, actionable, and versioned; prefer bullet points and group instructions by heading. Review periodically as architecture and conventions change.
+
 Best Practices:
 - Be specific: “Use 2-space indentation” is better than “Format code properly”.
 - Use structure to organize: Format each individual memory as a bullet point and group related memories under descriptive markdown headings.
