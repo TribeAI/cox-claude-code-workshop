@@ -38,6 +38,8 @@ Demonstrate a **fully automated end-to-end dev cycle** where Claude Code execute
 - **Subagents Examples**:
     - See example agent markdown files [here](https://github.com/TribeAI/cox-claude-code-workshop/tree/main/examples/agents)
     - Alternatively, try creating a new agent (following the formatting guidelines in the [Claude docs](https://docs.claude.com/en/docs/claude-code/sub-agents#file-format))
+- **Custom Slash Command Examples**:
+    - See example custom slash commands [here](https://github.com/TribeAI/cox-claude-code-workshop/tree/main/examples/commands) 
 - **MCP Server Docs**:
     - [Playwright MCP](https://github.com/microsoft/playwright-mcp?tab=readme-ov-file#getting-started)
     - [Context7 MCP](https://github.com/upstash/context7?tab=readme-ov-file#%EF%B8%8F-installation)
