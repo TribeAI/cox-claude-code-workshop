@@ -1,0 +1,109 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash(sudo *)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'BLOCKED: sudo commands are not allowed in Claude Code for security' && exit 1"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash(chmod 777 *)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'BLOCKED: chmod 777 creates security vulnerabilities' && echo 'Use appropriate file permissions instead' && exit 1"
+          }
+        ]
+      },
+      {
+        "matcher": ["Edit(*.production.*)", "Write(*.production.*)", "Edit(*prod*)", "Write(*prod*)"],
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'PRODUCTION FILE ACCESS CONTROL' && echo 'File: $CLAUDE_FILE_PATH' && echo 'This requires manager approval.' && echo 'Enter approval code:' && read -s approval && [[ $approval == $PROD_APPROVAL_CODE ]] || (echo 'Access denied' && exit 1)"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash(git push origin main)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'MAIN BRANCH PROTECTION' && echo 'Direct pushes to main require lead developer approval' && echo 'Checking commit author and approval...' && git log -1 --pretty=format:'%an' | grep -q 'claude' && echo 'Claude Code commits to main require human review' && exit 1"
+          }
+        ]
+      },
+      {
+        "matcher": ["Bash(curl *)", "Bash(wget *)"],
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'NETWORK ACCESS CONTROL' && echo 'URL: $*' && echo 'Verifying safe external access...' && (echo '$*' | grep -E '(github\\.com|npmjs\\.com|api\\.company\\.com)' || (echo 'External URL not in allowlist' && exit 1))"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash(docker *)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'DOCKER SECURITY CHECK' && echo 'Ensuring secure Docker usage...' && (echo '$*' | grep -v -- '--privileged' || (echo 'Privileged Docker containers not allowed' && exit 1))"
+          }
+        ]
+      },
+      {
+        "matcher": ["Edit(src/config/*)", "Write(src/config/*)", "Edit(config/*)", "Write(config/*)"],
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'CONFIGURATION CHANGE CONTROL' && echo 'Config changes require peer review' && echo 'Creating backup...' && cp '$CLAUDE_FILE_PATH' '$CLAUDE_FILE_PATH.backup.$(date +%Y%m%d-%H%M%S)' && echo 'Backup created'"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": ["Edit(*.env*)", "Write(*.env*)"],
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'SECURITY: Scanning for exposed secrets...' && (grep -E '(password|secret|key|token)\\s*=\\s*[^\\s]' '$CLAUDE_FILE_PATH' && echo 'WARNING: Potential secrets detected - review file before commit' || echo 'No obvious secrets detected')"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash(npm install *)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'DEPENDENCY SECURITY SCAN' && npm audit && echo 'Package installation security check complete'"
+          }
+        ]
+      },
+      {
+        "matcher": ["Edit(*)", "Write(*)"],
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'FILE CHANGE AUDIT' && echo \"$(date): FILE_MODIFIED: $CLAUDE_FILE_PATH by Claude Code\" >> .claude/file-audit.log"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"NOTIFICATION: $CLAUDE_NOTIFICATION_MESSAGE\" >> .claude/notifications.log"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This hands-on workshop is designed to **showcase intermediate-to-advanced features of Claude Code** through structured, hands-on tracks. Participants will get to see end-to-end development cycles automated by Claude, leveraging **subagents** and **MCP servers** for documentation and automated testing.
+This hands-on workshop is designed to **showcase intermediate-to-advanced features of Claude Code** through structured, hands-on tracks. Participants will master basic workflows AND genuinely advanced patterns like parallel development, production automation, and multi-agent orchestration.
 
 By the end, attendees should understand how to:
 
@@ -10,6 +10,7 @@ By the end, attendees should understand how to:
 - Use **subagents** to generate structured task plans and execute them.
 - Integrate **MCP servers** for documentation access, browser testing, and visual validation.
 - Run a full loop: spec → code → tests → PR.
+- **Master advanced workflows**: parallel development with worktrees, production-ready hooks, and multi-agent coordination.
 
 ---
 
@@ -43,8 +44,9 @@ Demonstrate a **fully automated end-to-end dev cycle** where Claude Code execute
 - **MCP Server Docs**:
     - [Playwright MCP](https://github.com/microsoft/playwright-mcp?tab=readme-ov-file#getting-started)
     - [Context7 MCP](https://github.com/upstash/context7?tab=readme-ov-file#%EF%B8%8F-installation)
-- **Guides**:
-    - Walkthrough guides on applying CLAUDE.md, custom commands, MCP, and subagents can be found [here](https://github.com/TribeAI/cox-claude-code-workshop/tree/main/guides)
+- **Advanced Guides**:
+    - See [`guides/`](./guides/) for focused guides on worktrees and other advanced patterns
+    - All practical configurations available in [`examples/`](./examples/)
 
 ### Getting Started with the TodoMVC React Repo
 
@@ -132,6 +134,88 @@ Developers can try:
     
     > “Add browser tests for user login using Playwright MCP. Make sure they run successfully before creating a PR.”
     > 
+
+---
+
+## Track 3: Advanced Problem-Solving Skills
+
+### Goal
+Master **advanced Claude Code problem-solving techniques** that dramatically improve your daily development workflow: debugging stuck conversations, managing context in large codebases, and sophisticated prompting for complex scenarios.
+
+### Duration
+25 minutes per section (pick 1-2 based on your current challenges)
+
+### Prerequisites
+- Completed Track 1 or 2, OR
+- Existing Claude Code experience with basic workflows
+- Experience with getting "stuck" or frustrated with Claude responses
+
+### Section A: Parallel Development Mastery
+**Skill**: Use git worktrees to develop multiple features simultaneously with focused Claude Code sessions
+
+**Hands-On Exercise**:
+1. Set up 2 worktrees for TodoMVC with parallel features (categories + search)
+2. Run focused Claude Code sessions in each worktree
+3. Develop features independently, then integrate
+4. **Success Criteria**: Complete 2 features faster than sequential development
+
+**Real Scenario**: "Add dark mode AND user preferences without context switching overhead"
+
+### Section B: Debugging Stuck Workflows
+**Skill**: Quickly recover when Claude gets confused, over-analyzes, or produces poor results
+
+**Hands-On Exercise**:
+1. Intentionally create a "stuck" scenario with vague requirements
+2. Practice recovery techniques: reset & redirect, scope limiting, progressive disclosure
+3. Transform confused conversation into productive implementation in under 5 minutes
+4. **Success Criteria**: Master 3 recovery patterns applicable to your daily workflow
+
+**Real Scenario**: "Claude is over-analyzing instead of implementing" → Working feature in minutes
+
+### Section B: Advanced Context Management
+**Skill**: Guide Claude effectively in large, complex codebases without information overload
+
+**Hands-On Exercise**:
+1. Take a complex feature request for TodoMVC (or your own codebase)
+2. Practice context layering, selective file reading, and pattern recognition
+3. Guide Claude to understand and modify code without getting lost
+4. **Success Criteria**: Claude makes meaningful changes with no confusion or backtracking
+
+**Real Scenario**: "Add authentication system" → Clean implementation that follows existing patterns
+
+### Section C: Context Layering
+**Skill**: Guide Claude effectively in large, complex codebases without information overload
+
+**Hands-On Exercise**:
+1. Take a complex feature request for TodoMVC (or your own codebase)
+2. Practice context layering, selective file reading, and pattern recognition
+3. Guide Claude to understand and modify code without getting lost
+4. **Success Criteria**: Claude makes meaningful changes with no confusion or backtracking
+
+**Real Scenario**: "Add authentication system" → Clean implementation that follows existing patterns
+
+### Section D: Sophisticated Prompting Patterns
+**Skill**: Craft advanced prompts that get superior results for complex, real-world scenarios
+
+**Hands-On Exercise**:
+1. Learn constraint-driven development, result-driven prompting, and multi-phase problem solving
+2. Compare basic prompts vs advanced patterns on the same task
+3. Practice production-mindset vs prototype-mindset prompting
+4. **Success Criteria**: Advanced prompts produce dramatically better results than basic ones
+
+**Real Scenario**: Transform "make it better" → Specific, measurable improvements with clear success criteria
+
+### Resources
+- **Parallel Development**: [`guides/Parallel_Development_with_Worktrees.md`](./guides/Parallel_Development_with_Worktrees.md) + [`examples/worktrees/`](./examples/worktrees/)
+- **Problem-Solving**: [`examples/problem-solving/`](./examples/problem-solving/) - Copy-paste patterns for common scenarios
+- **Production Automation**: [`examples/hooks/`](./examples/hooks/) - Quality gates and team integration
+
+### Why These Are Genuinely Advanced
+- **Parallel Development**: Worktree workflows that enable focused, simultaneous development
+- **Problem-Solving Focus**: Skills you need daily but can't learn from basic documentation
+- **Immediate Impact**: Techniques that improve your workflow from day one
+- **Real Scenarios**: Based on actual frustrations developers face with Claude Code
+- **Transferable Skills**: Patterns that work across any codebase or technology stack
 
 ---
 
