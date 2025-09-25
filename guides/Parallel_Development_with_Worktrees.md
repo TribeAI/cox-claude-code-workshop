@@ -127,6 +127,77 @@ npm run build
 # If conflicts, resolve with both contexts in mind
 ```
 
+## Context Management Without Configuration Pollution
+
+### The Problem with Per-Worktree Configuration
+Creating worktree-specific `CLAUDE.md`, agent configs, or context files causes:
+- **Merge conflicts** when integrating branches back to main
+- **Polluted git history** with temporary configuration files
+- **Inconsistent behavior** across development environments
+- **Lost configurations** when merging or cleaning up worktrees
+
+### Clean Context Management Strategies
+
+#### 1. Terminal and Session Organization
+```bash
+# Use descriptive terminal titles
+echo -e "\033]0;Frontend: Components & Styling\007"
+echo -e "\033]0;Backend: API & Database\007"
+
+# Organize with terminal multiplexers
+tmux new-session -d -s frontend-work -c ../project-frontend
+tmux new-session -d -s backend-work -c ../project-backend
+
+# Use shell prompts for context
+export PS1="[FRONTEND] \u@\h:\w$ "
+export PS1="[BACKEND] \u@\h:\w$ "
+```
+
+#### 2. Verbal Context Establishment
+```bash
+# Start Claude Code sessions with clear intent:
+# "I'm working on the frontend in this worktree. Focus on React components,
+#  CSS styling, and user interactions. Assume the API is already built."
+
+# "I'm working on the backend worktree. Focus on database models, API endpoints,
+#  and business logic. Don't worry about UI implementation."
+```
+
+#### 3. Temporary Notes (Gitignored)
+```bash
+# Add to .gitignore once for the entire project
+echo "worktree-notes/" >> .gitignore
+mkdir -p worktree-notes
+
+# Create temporary context files that won't be committed
+cat > worktree-notes/frontend-context.md << 'EOF'
+# Current Frontend Focus
+- Component architecture refactoring
+- CSS-in-JS implementation
+- React Router setup
+- Testing component interactions
+
+## Avoiding
+- API endpoint changes
+- Database schema modifications
+- Backend business logic
+EOF
+```
+
+#### 4. Branch Naming for Self-Documenting Context
+```bash
+# Use descriptive branch names that indicate focus
+git worktree add ../project-ui -b feature/ui-components-redesign
+git worktree add ../project-api -b feature/api-authentication-system
+git worktree add ../project-db -b feature/database-migration-v2
+
+# Directory names become context clues
+ls ../project-*
+# project-ui/     -> Frontend work
+# project-api/    -> Backend API work
+# project-db/     -> Database work
+```
+
 ## Workshop-Optimized Workflows
 
 ### 30-Minute Parallel Feature Development
