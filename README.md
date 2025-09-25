@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This hands-on workshop is designed to **showcase intermediate-to-advanced features of Claude Code** through structured, hands-on tracks. Participants will get to see end-to-end development cycles automated by Claude, leveraging **subagents** and **MCP servers** for documentation and automated testing.
+This hands-on workshop is designed to **showcase intermediate-to-advanced features of Claude Code** through structured, hands-on tracks. Participants will master basic workflows AND genuinely advanced patterns like parallel development, production automation, and multi-agent orchestration.
 
 By the end, attendees should understand how to:
 
@@ -10,6 +10,7 @@ By the end, attendees should understand how to:
 - Use **subagents** to generate structured task plans and execute them.
 - Integrate **MCP servers** for documentation access, browser testing, and visual validation.
 - Run a full loop: spec → code → tests → PR.
+- **Master advanced workflows**: parallel development with worktrees, production-ready hooks, and multi-agent coordination.
 
 ---
 
@@ -43,8 +44,9 @@ Demonstrate a **fully automated end-to-end dev cycle** where Claude Code execute
 - **MCP Server Docs**:
     - [Playwright MCP](https://github.com/microsoft/playwright-mcp?tab=readme-ov-file#getting-started)
     - [Context7 MCP](https://github.com/upstash/context7?tab=readme-ov-file#%EF%B8%8F-installation)
-- **Guides**:
-    - Walkthrough guides on applying CLAUDE.md, custom commands, MCP, and subagents can be found [here](https://github.com/TribeAI/cox-claude-code-workshop/tree/main/guides)
+- **Advanced Guides**:
+    - See [`guides/`](./guides/) for focused guides on worktrees and other advanced patterns
+    - All practical configurations available in [`examples/`](./examples/)
 
 ### Getting Started with the TodoMVC React Repo
 
@@ -132,6 +134,63 @@ Developers can try:
     
     > “Add browser tests for user login using Playwright MCP. Make sure they run successfully before creating a PR.”
     > 
+
+---
+
+## Track 3: Advanced Workflows
+
+### Goal
+Master **genuinely advanced Claude Code patterns** that go beyond basic documentation: parallel development with worktrees, production-ready automation with hooks, and multi-agent orchestration for complex workflows.
+
+### Duration
+30 minutes per section (can pick 1-2 based on interest)
+
+### Prerequisites
+- Completed Track 1 or 2, OR
+- Existing Claude Code experience with subagents and basic workflows
+
+### Section A: Parallel Development Mastery
+**Skill**: Develop multiple features simultaneously without blocking
+
+**Hands-On Exercise**:
+1. Set up TodoMVC with 2 parallel worktrees using examples in [`examples/worktrees/`](./examples/worktrees/)
+2. Run specialized agents in each worktree (auth specialist + UI specialist)
+3. Coordinate development and integration across worktrees
+4. **Success Criteria**: Two features developed in parallel, integrated successfully
+
+**Real Scenario**: "Add dark mode AND user preferences simultaneously without conflicts"
+
+### Section B: Production-Ready Automation
+**Skill**: Implement quality gates and team integration with hooks
+
+**Hands-On Exercise**:
+1. Install hook configurations from [`examples/hooks/`](./examples/hooks/)
+2. Set up pre-commit quality gates (tests, linting, security scans)
+3. Configure team notifications for deployments and errors
+4. **Success Criteria**: Automated quality pipeline prevents bad commits, notifies team
+
+**Real Scenario**: "Block dangerous operations, auto-run tests, notify team of changes"
+
+### Section C: Multi-Agent Orchestration
+**Skill**: Coordinate multiple specialized agents for complex workflows
+
+**Hands-On Exercise**:
+1. Set up orchestrator agent from [`examples/agents/orchestrator.md`](./examples/agents/orchestrator.md)
+2. Create 2-3 specialized agents (backend, frontend, testing)
+3. Use orchestrator to coordinate a complex feature implementation
+4. **Success Criteria**: Orchestrator delegates tasks, coordinates results, produces integrated solution
+
+**Real Scenario**: "Implement user authentication with coordinated backend, frontend, and testing work"
+
+### Resources
+- **Advanced Guides**: [`guides/Applying_Git_Worktrees.md`](./guides/Applying_Git_Worktrees.md)
+- **Practical Examples**: All configurations in [`examples/`](./examples/) are copy-paste ready
+- **Integration Patterns**: Combine worktrees + hooks + agents for enterprise workflows
+
+### Why These Are Genuinely Advanced
+- **Worktrees**: Parallel development patterns not covered in basic docs
+- **Hooks**: Production automation configurations that solve real team problems
+- **Orchestration**: Multi-agent coordination for complex scenarios beyond simple task delegation
 
 ---
 
