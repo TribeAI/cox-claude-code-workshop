@@ -210,7 +210,7 @@ Master **advanced Claude Code problem-solving techniques** that dramatically imp
 - **Problem-Solving**: [`examples/problem-solving/`](./examples/problem-solving/) - Copy-paste patterns for common scenarios
 - **Production Automation**: [`examples/hooks/`](./examples/hooks/) - Quality gates and team integration
 
-### Why These Are Genuinely Advanced
+### Why These Are Advanced
 - **Parallel Development**: Worktree workflows that enable focused, simultaneous development
 - **Problem-Solving Focus**: Skills you need daily but can't learn from basic documentation
 - **Immediate Impact**: Techniques that improve your workflow from day one
