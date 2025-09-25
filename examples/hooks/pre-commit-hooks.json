@@ -1,0 +1,80 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash(git commit *)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Running pre-commit checks...' && npm run lint && npm run test:quick && npm run build"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash(git push *)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Validating push...' && git-secrets --scan && echo 'Security scan passed'"
+          }
+        ]
+      },
+      {
+        "matcher": ["Edit(*.env*)", "Write(*.env*)", "Edit(*secret*)", "Write(*secret*)"],
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'WARNING: Editing sensitive files requires extra caution' && echo 'Ensure no secrets are committed to git' && read -p 'Continue with caution? (y/n): ' confirm && [[ $confirm == y ]]"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash(rm *)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'DANGER: Destructive rm command detected!' && echo 'Command: rm $*' && read -p 'Are you absolutely sure? Type DELETE to confirm: ' confirm && [[ $confirm == DELETE ]]"
+          }
+        ]
+      },
+      {
+        "matcher": "Edit(package.json)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'package.json modification detected - will run npm install after edit'"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit(package.json)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Installing updated dependencies...' && npm install && echo 'Dependencies updated successfully'"
+          }
+        ]
+      },
+      {
+        "matcher": ["Edit(*.js)", "Edit(*.ts)", "Edit(*.jsx)", "Edit(*.tsx)", "Write(*.js)", "Write(*.ts)", "Write(*.jsx)", "Write(*.tsx)"],
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Code file modified - running quick type check' && (npm run type-check || echo 'Type check failed - please review')"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash(git commit *)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Commit successful!' && git log -1 --pretty=format:'Latest commit: %h %s (%an)'"
+          }
+        ]
+      }
+    ]
+  }
+}

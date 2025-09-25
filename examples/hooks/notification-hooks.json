@@ -1,0 +1,84 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Bash(git push *)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Notifying team of push...' && curl -X POST -H 'Content-type: application/json' --data '{\"text\":\"Claude Code pushed changes to $(git branch --show-current): $(git log -1 --pretty=format:\\\"%s\\\")\"}' $SLACK_WEBHOOK_URL"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash(git commit *)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Logging commit activity...' && echo \"$(date): COMMIT by Claude Code: $(git log -1 --pretty=format:'%h %s')\" >> .claude/activity.log"
+          }
+        ]
+      },
+      {
+        "matcher": ["Edit(src/api/*)", "Write(src/api/*)", "Edit(api/*)", "Write(api/*)"],
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'API change detected - notifying backend team' && curl -X POST -H 'Content-type: application/json' --data '{\"text\":\"⚠️ API changes detected in $(pwd) - Backend team please review\"}' $BACKEND_SLACK_CHANNEL"
+          }
+        ]
+      },
+      {
+        "matcher": ["Edit(*.test.*)", "Write(*.test.*)", "Edit(*.spec.*)", "Write(*.spec.*)"],
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Test file updated - running test suite' && npm run test && curl -X POST -H 'Content-type: application/json' --data '{\"text\":\"✅ Tests updated and passing in $(basename $(pwd))\"}' $QA_SLACK_CHANNEL"
+          }
+        ]
+      },
+      {
+        "matcher": ["Edit(README.md)", "Edit(CHANGELOG.md)", "Edit(*.md)"],
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Documentation updated' && curl -X POST -H 'Content-type: application/json' --data '{\"text\":\"📚 Documentation updated by Claude Code in $(basename $(pwd))\"}' $DOCS_SLACK_CHANNEL"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"Claude Code session started in $(basename $(pwd))\" && curl -X POST -H 'Content-type: application/json' --data '{\"text\":\"🤖 Claude Code session started in $(basename $(pwd)) by $USER\"}' $DEV_SLACK_CHANNEL"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"Claude Code session ended - summary:\" && git log --oneline -10 && curl -X POST -H 'Content-type: application/json' --data '{\"text\":\"🏁 Claude Code session completed in $(basename $(pwd))\"}' $DEV_SLACK_CHANNEL"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"User prompt: $(echo '$CLAUDE_USER_MESSAGE' | head -c 50)...\" >> .claude/session.log"
+          }
+        ]
+      }
+    ]
+  }
+}
