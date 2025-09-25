@@ -60,52 +60,34 @@ echo "Focus: API design, database, business logic" > CLAUDE_CONTEXT.md
 
 ## Claude Code Integration Patterns
 
-### Pattern 1: Focused Context Files
-Create worktree-specific context to keep Claude focused.
+### Pattern 1: Context Management Without Configuration Pollution
+Maintain focus across worktrees without creating merge conflicts.
 
 ```bash
-# In frontend worktree
-cat > CLAUDE.md << 'EOF'
-# Frontend Development Context
+# Use descriptive terminal titles for context
+# Terminal 1: Frontend Development
+export PS1="[FRONTEND] \u@\h:\w$ "
 
-## Current Focus
-- React component development
-- CSS/styling implementation
-- User interaction patterns
-- No backend changes
+# Terminal 2: Backend Development
+export PS1="[BACKEND] \u@\h:\w$ "
 
-## Key Files
-- src/components/ (React components)
-- src/styles/ (CSS modules)
-- src/hooks/ (Custom hooks)
-
-## Constraints
-- Keep API calls in existing services
-- Follow existing component patterns
-- Test components in isolation
-EOF
+# Start Claude Code with verbal context
+# "Focus on React components, styling, and UI interactions only"
+# "Focus on API endpoints, database, and business logic only"
 ```
 
 ```bash
-# In backend worktree
-cat > CLAUDE.md << 'EOF'
-# Backend Development Context
+# Create temporary, gitignored notes for complex contexts
+echo "notes/" >> .gitignore
+mkdir -p notes
 
-## Current Focus
-- API endpoint development
-- Database schema changes
-- Business logic implementation
-- No frontend changes
-
-## Key Files
-- src/api/ (Route handlers)
-- src/models/ (Database models)
-- src/services/ (Business logic)
-
-## Constraints
-- Maintain API compatibility
-- Follow existing error handling patterns
-- Include appropriate tests
+# Frontend worktree context (not committed)
+cat > notes/frontend-context.md << 'EOF'
+# Frontend Development Notes
+- Working on React component architecture
+- Focus: src/components/, src/styles/, src/hooks/
+- Avoid: API changes, database modifications
+- Current sprint: User interaction patterns
 EOF
 ```
 
