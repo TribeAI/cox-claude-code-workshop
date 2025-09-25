@@ -137,60 +137,85 @@ Developers can try:
 
 ---
 
-## Track 3: Advanced Workflows
+## Track 3: Advanced Problem-Solving Skills
 
 ### Goal
-Master **genuinely advanced Claude Code patterns** that go beyond basic documentation: parallel development with worktrees, production-ready automation with hooks, and multi-agent orchestration for complex workflows.
+Master **advanced Claude Code problem-solving techniques** that dramatically improve your daily development workflow: debugging stuck conversations, managing context in large codebases, and sophisticated prompting for complex scenarios.
 
 ### Duration
-30 minutes per section (can pick 1-2 based on interest)
+25 minutes per section (pick 1-2 based on your current challenges)
 
 ### Prerequisites
 - Completed Track 1 or 2, OR
-- Existing Claude Code experience with subagents and basic workflows
+- Existing Claude Code experience with basic workflows
+- Experience with getting "stuck" or frustrated with Claude responses
 
 ### Section A: Parallel Development Mastery
-**Skill**: Develop multiple features simultaneously without blocking
+**Skill**: Use git worktrees to develop multiple features simultaneously with focused Claude Code sessions
 
 **Hands-On Exercise**:
-1. Set up TodoMVC with 2 parallel worktrees using examples in [`examples/worktrees/`](./examples/worktrees/)
-2. Run specialized agents in each worktree (auth specialist + UI specialist)
-3. Coordinate development and integration across worktrees
-4. **Success Criteria**: Two features developed in parallel, integrated successfully
+1. Set up 2 worktrees for TodoMVC with parallel features (categories + search)
+2. Run focused Claude Code sessions in each worktree
+3. Develop features independently, then integrate
+4. **Success Criteria**: Complete 2 features faster than sequential development
 
-**Real Scenario**: "Add dark mode AND user preferences simultaneously without conflicts"
+**Real Scenario**: "Add dark mode AND user preferences without context switching overhead"
 
-### Section B: Production-Ready Automation
-**Skill**: Implement quality gates and team integration with hooks
-
-**Hands-On Exercise**:
-1. Install hook configurations from [`examples/hooks/`](./examples/hooks/)
-2. Set up pre-commit quality gates (tests, linting, security scans)
-3. Configure team notifications for deployments and errors
-4. **Success Criteria**: Automated quality pipeline prevents bad commits, notifies team
-
-**Real Scenario**: "Block dangerous operations, auto-run tests, notify team of changes"
-
-### Section C: Multi-Agent Orchestration
-**Skill**: Coordinate multiple specialized agents for complex workflows
+### Section B: Debugging Stuck Workflows
+**Skill**: Quickly recover when Claude gets confused, over-analyzes, or produces poor results
 
 **Hands-On Exercise**:
-1. Set up orchestrator agent from [`examples/agents/orchestrator.md`](./examples/agents/orchestrator.md)
-2. Create 2-3 specialized agents (backend, frontend, testing)
-3. Use orchestrator to coordinate a complex feature implementation
-4. **Success Criteria**: Orchestrator delegates tasks, coordinates results, produces integrated solution
+1. Intentionally create a "stuck" scenario with vague requirements
+2. Practice recovery techniques: reset & redirect, scope limiting, progressive disclosure
+3. Transform confused conversation into productive implementation in under 5 minutes
+4. **Success Criteria**: Master 3 recovery patterns applicable to your daily workflow
 
-**Real Scenario**: "Implement user authentication with coordinated backend, frontend, and testing work"
+**Real Scenario**: "Claude is over-analyzing instead of implementing" → Working feature in minutes
+
+### Section B: Advanced Context Management
+**Skill**: Guide Claude effectively in large, complex codebases without information overload
+
+**Hands-On Exercise**:
+1. Take a complex feature request for TodoMVC (or your own codebase)
+2. Practice context layering, selective file reading, and pattern recognition
+3. Guide Claude to understand and modify code without getting lost
+4. **Success Criteria**: Claude makes meaningful changes with no confusion or backtracking
+
+**Real Scenario**: "Add authentication system" → Clean implementation that follows existing patterns
+
+### Section C: Advanced Context Management
+**Skill**: Guide Claude effectively in large, complex codebases without information overload
+
+**Hands-On Exercise**:
+1. Take a complex feature request for TodoMVC (or your own codebase)
+2. Practice context layering, selective file reading, and pattern recognition
+3. Guide Claude to understand and modify code without getting lost
+4. **Success Criteria**: Claude makes meaningful changes with no confusion or backtracking
+
+**Real Scenario**: "Add authentication system" → Clean implementation that follows existing patterns
+
+### Section D: Sophisticated Prompting Patterns
+**Skill**: Craft advanced prompts that get superior results for complex, real-world scenarios
+
+**Hands-On Exercise**:
+1. Learn constraint-driven development, result-driven prompting, and multi-phase problem solving
+2. Compare basic prompts vs advanced patterns on the same task
+3. Practice production-mindset vs prototype-mindset prompting
+4. **Success Criteria**: Advanced prompts produce dramatically better results than basic ones
+
+**Real Scenario**: Transform "make it better" → Specific, measurable improvements with clear success criteria
 
 ### Resources
-- **Advanced Guides**: [`guides/Applying_Git_Worktrees.md`](./guides/Applying_Git_Worktrees.md)
-- **Practical Examples**: All configurations in [`examples/`](./examples/) are copy-paste ready
-- **Integration Patterns**: Combine worktrees + hooks + agents for enterprise workflows
+- **Parallel Development**: [`guides/Parallel_Development_with_Worktrees.md`](./guides/Parallel_Development_with_Worktrees.md) + [`examples/worktrees/`](./examples/worktrees/)
+- **Problem-Solving**: [`examples/problem-solving/`](./examples/problem-solving/) - Copy-paste patterns for common scenarios
+- **Production Automation**: [`examples/hooks/`](./examples/hooks/) - Quality gates and team integration
 
 ### Why These Are Genuinely Advanced
-- **Worktrees**: Parallel development patterns not covered in basic docs
-- **Hooks**: Production automation configurations that solve real team problems
-- **Orchestration**: Multi-agent coordination for complex scenarios beyond simple task delegation
+- **Parallel Development**: Worktree workflows that enable focused, simultaneous development
+- **Problem-Solving Focus**: Skills you need daily but can't learn from basic documentation
+- **Immediate Impact**: Techniques that improve your workflow from day one
+- **Real Scenarios**: Based on actual frustrations developers face with Claude Code
+- **Transferable Skills**: Patterns that work across any codebase or technology stack
 
 ---
 
