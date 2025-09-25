@@ -73,7 +73,7 @@ export PS1="[FRONTEND] \u@\h:\w$ "
 # Terminal 2: Backend Development
 export PS1="[BACKEND] \u@\h:\w$ "
 
-# Start Claude Code with verbal context
+# Start Claude Code with initial context
 # "Focus on React components, styling, and UI interactions only"
 # "Focus on API endpoints, database, and business logic only"
 ```
