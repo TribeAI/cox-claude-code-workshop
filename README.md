@@ -183,7 +183,7 @@ Master **advanced Claude Code problem-solving techniques** that dramatically imp
 
 **Real Scenario**: "Add authentication system" → Clean implementation that follows existing patterns
 
-### Section C: Advanced Context Management
+### Section C: Context Layering
 **Skill**: Guide Claude effectively in large, complex codebases without information overload
 
 **Hands-On Exercise**:
