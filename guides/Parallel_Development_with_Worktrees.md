@@ -50,13 +50,13 @@ cd ../project-feature
 # Frontend-focused worktree with clear directory naming
 git worktree add ../project-frontend -b feature/frontend-work
 cd ../project-frontend
-# Use terminal title and verbal context instead of files
+# Use terminal title and conversational context instead of files
 echo -e "\033]0;Frontend Development - $(basename $(pwd))\007"
 
 # Backend-focused worktree with clear directory naming
 git worktree add ../project-backend -b feature/backend-work
 cd ../project-backend
-# Use terminal title and verbal context instead of files
+# Use terminal title and conversational context instead of files
 echo -e "\033]0;Backend Development - $(basename $(pwd))\007"
 ```
 
@@ -97,11 +97,11 @@ EOF
 Use session management and clear communication instead of configuration files.
 
 ```bash
-# Start frontend session with clear verbal context
+# Start frontend session with clear conversational context
 # "I'm working in the frontend worktree on React components and styling.
 #  Please focus on UI/UX concerns and assume the API already exists."
 
-# Start backend session with clear verbal context
+# Start backend session with clear conversational context
 # "I'm working in the backend worktree on API endpoints and database logic.
 #  Please focus on data and business logic, assuming the frontend will consume it correctly."
 
@@ -153,9 +153,9 @@ export PS1="[FRONTEND] \u@\h:\w$ "
 export PS1="[BACKEND] \u@\h:\w$ "
 ```
 
-#### 2. Verbal Context Establishment
+#### 2. Conversational Context Setup
 ```bash
-# Start Claude Code sessions with clear intent:
+# Start Claude Code sessions by clearly stating your focus:
 # "I'm working on the frontend in this worktree. Focus on React components,
 #  CSS styling, and user interactions. Assume the API is already built."
 
@@ -313,8 +313,8 @@ ln -s ../project-main/node_modules ../project-feature/node_modules
 
 ### Context Management
 1. **Use consistent project configuration** - Keep CLAUDE.md shared across all worktrees
-2. **Verbal context establishment** - Start sessions with clear focus statements
-3. **Clear boundaries** - Define what's in/out of scope for each worktree verbally
+2. **Conversational context setup** - Start sessions with clear focus statements
+3. **Clear boundaries** - Define what's in/out of scope for each worktree conversationally
 4. **Document decisions** - Track important choices in gitignored notes or issues
 
 ### Performance Optimization
