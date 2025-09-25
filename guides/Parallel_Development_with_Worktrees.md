@@ -45,17 +45,19 @@ cd ../project-feature
 # Start Claude Code session with focused context
 ```
 
-### Advanced Setup with Specialized Contexts
+### Advanced Setup with Clean Context Management
 ```bash
-# Frontend-focused worktree
+# Frontend-focused worktree with clear directory naming
 git worktree add ../project-frontend -b feature/frontend-work
 cd ../project-frontend
-echo "Focus: UI components, styling, user interaction" > CLAUDE_CONTEXT.md
+# Use terminal title and verbal context instead of files
+echo -e "\033]0;Frontend Development - $(basename $(pwd))\007"
 
-# Backend-focused worktree
+# Backend-focused worktree with clear directory naming
 git worktree add ../project-backend -b feature/backend-work
 cd ../project-backend
-echo "Focus: API design, database, business logic" > CLAUDE_CONTEXT.md
+# Use terminal title and verbal context instead of files
+echo -e "\033]0;Backend Development - $(basename $(pwd))\007"
 ```
 
 ## Claude Code Integration Patterns
@@ -91,27 +93,21 @@ cat > notes/frontend-context.md << 'EOF'
 EOF
 ```
 
-### Pattern 2: Specialized Agent Usage
-Use different agents optimized for different contexts.
+### Pattern 2: Session-Based Context Management
+Use session management and clear communication instead of configuration files.
 
 ```bash
-# Frontend worktree - UI specialist agent
-"You're working in the frontend worktree. Focus purely on:
-- Component design and implementation
-- CSS and styling decisions
-- User experience optimization
-- React best practices
+# Start frontend session with clear verbal context
+# "I'm working in the frontend worktree on React components and styling.
+#  Please focus on UI/UX concerns and assume the API already exists."
 
-Ignore backend concerns - assume APIs exist and work correctly."
+# Start backend session with clear verbal context
+# "I'm working in the backend worktree on API endpoints and database logic.
+#  Please focus on data and business logic, assuming the frontend will consume it correctly."
 
-# Backend worktree - API specialist agent
-"You're working in the backend worktree. Focus purely on:
-- API design and implementation
-- Database operations and optimization
-- Business logic and validation
-- Error handling and logging
-
-Ignore frontend concerns - assume components will consume APIs correctly."
+# Use session naming for terminal multiplexers
+tmux new-session -d -s frontend-dev -c ../project-frontend
+tmux new-session -d -s backend-dev -c ../project-backend
 ```
 
 ### Pattern 3: Cross-Worktree Coordination
@@ -245,10 +241,10 @@ ln -s ../project-main/node_modules ../project-feature/node_modules
 4. **Test integration early** - Don't wait until the end to test combined features
 
 ### Context Management
-1. **Use different CLAUDE.md files** - Keep Claude focused on worktree-specific goals
-2. **Specialized prompting** - Adapt prompting style to each worktree's context
-3. **Clear boundaries** - Define what's in/out of scope for each worktree
-4. **Document decisions** - Track important choices that affect integration
+1. **Use consistent project configuration** - Keep CLAUDE.md shared across all worktrees
+2. **Verbal context establishment** - Start sessions with clear focus statements
+3. **Clear boundaries** - Define what's in/out of scope for each worktree verbally
+4. **Document decisions** - Track important choices in gitignored notes or issues
 
 ### Performance Optimization
 1. **Share dependencies** - Use symlinks for node_modules when possible
